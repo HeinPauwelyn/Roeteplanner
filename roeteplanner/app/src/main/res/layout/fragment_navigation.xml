@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="be.howest.nmct.roeteplanner.NavigationFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/Vertrekpunt"
+        android:id="@+id/txvVertrekpunt"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtVertrekpunt"
+        android:layout_below="@+id/txvVertrekpunt"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/btnZoekVertekpunt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtAankomstpunt"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txvAankomstpunt"
+        android:layout_alignEnd="@+id/edtVertrekpunt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/aankomstpunt"
+        android:id="@+id/txvAankomstpunt"
+        android:layout_below="@+id/edtVertrekpunt"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp" />
+
+    <ImageButton
+        android:layout_width="64px"
+        android:layout_height="64px"
+        android:id="@+id/btnZoekVertekpunt"
+        android:layout_below="@+id/txvVertrekpunt"
+        android:layout_alignParentEnd="true"
+        android:background="@mipmap/ic_zoeken" />
+
+    <ImageButton
+        android:layout_width="64px"
+        android:layout_height="64px"
+        android:id="@+id/btnZoekAankomstpunt"
+        android:background="@mipmap/ic_zoeken"
+        android:layout_alignTop="@+id/edtAankomstpunt"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/toon_roete"
+        android:id="@+id/btnToonRoete"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/edtAankomstpunt"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/btnZoekAankomstpunt" />
+
+</RelativeLayout>
