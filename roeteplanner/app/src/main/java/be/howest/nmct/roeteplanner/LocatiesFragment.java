@@ -10,17 +10,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import be.howest.nmct.roeteplanner.classes.Locatie;
+import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LocatiesFragment extends Fragment {
+public class LocatiesFragment extends Fragment  {
 
     @Bind(R.id.txvKopTekst) TextView txvKopTekst;
     @Bind(R.id.lstLocaties) ListView lstLocaties;
     @Bind(R.id.btnSelecteren) Button btnSelecteren;
     @Bind(R.id.btnNieuw) Button btnNieuw;
 
-    private OnLocatieGevondenListener _listener;
+    private OnFragementReplaceListener _fragmentReplaceListener;
+    private OnLocatieGevondenListener _locatieGevodenlistener;
     private static String _kopTekst = "Uw locaties";
     private static Locatie _locatie;
 
@@ -33,6 +35,7 @@ public class LocatiesFragment extends Fragment {
 
     public static LocatiesFragment newInstance(String kopTekst) {
         _kopTekst = kopTekst;
+
         return new LocatiesFragment();
     }
 
@@ -53,6 +56,17 @@ public class LocatiesFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         txvKopTekst.setText(_kopTekst);
+
+        _fragmentReplaceListener = (StartActivity) getActivity();
+
+        btnNieuw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (_fragmentReplaceListener != null) {
+                    _fragmentReplaceListener.newFragment(NieuweLocatieFragment.newInstance());
+                }
+            }
+        });
 
         return view;
     }

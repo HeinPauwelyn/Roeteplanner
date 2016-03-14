@@ -14,4 +14,9 @@
     <string name="toon_roete">Toon roete</string>
     <string name="selecteren">Selecteren</string>
     <string name="lorem_ipsum">Lorem ipsum</string>
+    <string name="postcode_gemeente">Postcode / Gemeente</string>
+    <string name="locatie_toevoegen">Locatie toevoegen</string>
+    <string name="straat_nummer">Straat + Nummer</string>
+    <string name="toevoegen">Toevoegen</string>
+    <string name="annuleren">Annuleren</string>
 </resources>
