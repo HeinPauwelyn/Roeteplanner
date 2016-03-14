@@ -28,4 +28,9 @@ public class Locatie {
         _gemeente = gemeente;
         _straat = straat;
     }
+    
+    @Override
+    public String toString() {
+        return _gemeente + "\r\n" + _straat;
+    }
 }
