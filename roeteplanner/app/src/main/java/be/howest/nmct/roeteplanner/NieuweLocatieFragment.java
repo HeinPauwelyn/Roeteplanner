@@ -41,6 +41,7 @@ public class NieuweLocatieFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         _fragmentReplaceListener = (StartActivity) getActivity();
+        _nieuweLocatieCreatieListener = (StartActivity) getActivity();
 
         btnAnnuleren.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +50,16 @@ public class NieuweLocatieFragment extends Fragment {
             }
         });
 
-        return  view;
+        btnToevoegen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                _nieuweLocatieCreatieListener.onNieuweLocatieCreeerd(new Locatie(edtGemeente.getText().toString(), edtStraat.getText().toString()));
+                _fragmentReplaceListener.newFragment(LocatiesFragment.newInstance());
+            }
+        });
+
+        return view;
     }
 
     public interface OnNieuweLocatieCreatieListener {

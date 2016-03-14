@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -24,7 +27,7 @@ public class LocatiesFragment extends Fragment  {
     private OnFragementReplaceListener _fragmentReplaceListener;
     private OnLocatieGevondenListener _locatieGevodenlistener;
     private static String _kopTekst = "Uw locaties";
-    private static Locatie _locatie;
+    private static LocatieRepo _locatieRepo;
 
     public LocatiesFragment() {
     }
@@ -39,8 +42,8 @@ public class LocatiesFragment extends Fragment  {
         return new LocatiesFragment();
     }
 
-    public static LocatiesFragment newInstance(String kopTekst, Locatie locatie) {
-        _locatie = locatie;
+    public static LocatiesFragment newInstance(String kopTekst, LocatieRepo locatieRepo) {
+        _locatieRepo = locatieRepo;
         return newInstance(kopTekst);
     }
 
