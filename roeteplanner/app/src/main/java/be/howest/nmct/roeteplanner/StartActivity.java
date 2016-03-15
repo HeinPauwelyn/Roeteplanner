@@ -19,7 +19,7 @@ import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 
 public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnFragementReplaceListener, NieuweLocatieFragment.OnNieuweLocatieCreatieListener {
 
-    private LocatieRepo _locatieRepo = new LocatieRepo();
+    private LocatieRepo _locatieRepo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 

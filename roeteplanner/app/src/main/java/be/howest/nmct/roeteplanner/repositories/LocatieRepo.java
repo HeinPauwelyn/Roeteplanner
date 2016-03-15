@@ -11,6 +11,7 @@ import be.howest.nmct.roeteplanner.classes.Locatie;
 public class LocatieRepo {
     private ArrayList<Locatie> _locaties = new ArrayList<Locatie>();
     private final String _bestandsnaam = "Roeteplaner_locaties.csv";
+    private Context _ctx;
 
     public ArrayList<Locatie> getLocaties() {
         return _locaties;
@@ -21,6 +22,10 @@ public class LocatieRepo {
     }
 
     public LocatieRepo() {
+    }
+
+    public LocatieRepo(Context ctx) {
+        _ctx = ctx;
         readLocaties();
     }
 
@@ -28,14 +33,15 @@ public class LocatieRepo {
 
         String tekst = "";
 
-        try {
-
-            //FileOutputStream fos = openFileOutput(_bestandsnaam, Context.MODE_PRIVATE);
-            //fos.write(tekst.getBytes());
-            //fos.close();
-        }
-        catch (IOException ex) {
-            System.out.print(ex.getMessage());
+        if (_ctx != null) {
+            try {
+                FileOutputStream fos = _ctx.openFileOutput(_bestandsnaam, Context.MODE_PRIVATE);
+                fos.write(tekst.getBytes());
+                fos.close();
+            }
+            catch (IOException ex) {
+                System.out.print(ex.getMessage());
+            }
         }
     }
 
