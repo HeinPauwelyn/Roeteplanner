@@ -3,6 +3,7 @@ package be.howest.nmct.roeteplanner;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -39,6 +40,8 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         if (savedInstanceState == null) {
             toonFragment(new NavigationFragment());
         }
+
+        _locatieRepo = new LocatieRepo(getApplicationContext());
     }
 
     @Override
@@ -93,6 +96,13 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+
+        _locatieRepo.writeLocaties();
     }
 
     private  void toonFragment(Fragment fragment) {
