@@ -19,4 +19,7 @@
     <string name="straat_nummer">Straat + Nummer</string>
     <string name="toevoegen">Toevoegen</string>
     <string name="annuleren">Annuleren</string>
+    <string name="nieuwe_locatie">Nieuwe locatie</string>
+    <string name="bedoeld_u">Bedoeld u:</string>
+    <string name="locatie">Locatie</string>
 </resources>

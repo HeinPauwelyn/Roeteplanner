@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import be.howest.nmct.roeteplanner.classes.INieweLocatieFragment;
 import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.classes.OnNieuweLocatieCreatieListener;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class NieuweLocatieFragment extends Fragment {
+public class NieuweLocatieFragment extends Fragment implements INieweLocatieFragment {
 
     @Bind(R.id.btnToevoegen) Button btnToevoegen;
     @Bind(R.id.btnAnnuleren) Button btnAnnuleren;
@@ -62,8 +64,5 @@ public class NieuweLocatieFragment extends Fragment {
         return view;
     }
 
-    public interface OnNieuweLocatieCreatieListener {
 
-        void onNieuweLocatieCreeerd(Locatie locatie);
-    }
 }

@@ -17,11 +17,11 @@ import be.howest.nmct.roeteplanner.classes.Locatie;
 
 public class LocatieRepo {
 
-    private ArrayList<Locatie> _locaties = new ArrayList<Locatie>();
+    private static ArrayList<Locatie> _locaties = new ArrayList<Locatie>();
     private final String _bestandsnaam = "Roeteplaner_locaties.csv";
     private Context _ctx;
 
-    public ArrayList<Locatie> getLocaties() {
+    public static ArrayList<Locatie> getLocaties() {
         return _locaties;
     }
 
@@ -84,4 +84,5 @@ public class LocatieRepo {
     public void addLocatie(Locatie locatie){
         _locaties.add(locatie);
     }
+
 }

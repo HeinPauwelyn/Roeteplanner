@@ -2,6 +2,9 @@ package be.howest.nmct.roeteplanner;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +12,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
+import be.howest.nmct.roeteplanner.SmartNieuwLocatieFragement;
 import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.helpers.LocatieRecyclerAdapter;
 import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,7 +23,7 @@ import butterknife.ButterKnife;
 public class LocatiesFragment extends Fragment  {
 
     @Bind(R.id.txvKopTekst) TextView txvKopTekst;
-    @Bind(R.id.lstLocaties) ListView lstLocaties;
+    @Bind(R.id.rcvLocaties) RecyclerView rcvLocaties;
     @Bind(R.id.btnSelecteren) Button btnSelecteren;
     @Bind(R.id.btnNieuw) Button btnNieuw;
 
@@ -28,6 +31,9 @@ public class LocatiesFragment extends Fragment  {
     private OnLocatieGevondenListener _locatieGevodenlistener;
     private static String _kopTekst = "Uw locaties";
     private static LocatieRepo _locatieRepo;
+
+    private RecyclerView.LayoutManager _layoutManager;
+    private LocatieRecyclerAdapter _locatieRecyclerAdapter;
 
     public LocatiesFragment() {
     }
@@ -60,18 +66,31 @@ public class LocatiesFragment extends Fragment  {
 
         txvKopTekst.setText(_kopTekst);
 
+        _layoutManager = new LinearLayoutManager(getActivity());
         _fragmentReplaceListener = (StartActivity) getActivity();
+
+        rcvLocaties.setLayoutManager(_layoutManager);
+        rcvLocaties.setItemAnimator(new DefaultItemAnimator());
+
 
         btnNieuw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (_fragmentReplaceListener != null) {
-                    _fragmentReplaceListener.newFragment(NieuweLocatieFragment.newInstance());
+                    _fragmentReplaceListener.newFragment(SmartNieuwLocatieFragement.newInstance());
                 }
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+
+        _locatieRecyclerAdapter = new LocatieRecyclerAdapter();
+        rcvLocaties.setAdapter(_locatieRecyclerAdapter);
     }
 
     public interface OnLocatieGevondenListener {

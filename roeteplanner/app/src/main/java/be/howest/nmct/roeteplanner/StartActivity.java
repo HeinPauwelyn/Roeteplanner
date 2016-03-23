@@ -16,9 +16,10 @@ import android.view.MenuItem;
 
 import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.classes.OnNieuweLocatieCreatieListener;
 import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 
-public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnFragementReplaceListener, NieuweLocatieFragment.OnNieuweLocatieCreatieListener {
+public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnFragementReplaceListener, OnNieuweLocatieCreatieListener {
 
     private LocatieRepo _locatieRepo = null;
 
