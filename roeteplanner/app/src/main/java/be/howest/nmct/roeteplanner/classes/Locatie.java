@@ -2,12 +2,14 @@ package be.howest.nmct.roeteplanner.classes;
 
 public class Locatie {
 
-    private String _gemeente   = "";
-    private String _postcode   = "";
-    private String _nummer     = "";
-    private String _straat     = "";
-    private String _land       = "";
-    private String _plaatsnaam = "";
+    private String _gemeente;
+    private String _postcode;
+    private String _nummer;
+    private String _straat;
+    private String _land;
+    private String _plaatsnaam;
+    private String _formateerd = "";
+    private String _deelgemeente;
 
     public String getPlaatsnaam() {
         return _plaatsnaam;
@@ -53,25 +55,35 @@ public class Locatie {
         return _land;
     }
 
+    public void setFormateerd(String formateerd) {
+        _formateerd = formateerd;
+    }
+
+    public String getFormateerd() {
+        return _formateerd;
+    }
+
     public void setLand(String land) {
         _land = land;
     }
 
-    public Locatie(String gemeente, String postcode, String nummer, String straat, String land, String plaatsnaam) {
-        _gemeente = gemeente;
-        _postcode = postcode;
-        _nummer = nummer;
-        _straat = straat;
-        _land = land;
-        _plaatsnaam = plaatsnaam;
+    public void setDeelgemeente(String deelgemeente) {
+        _deelgemeente = deelgemeente;
     }
 
-    public Locatie(String gemeente, String postcode, String nummer, String straat, String land) {
-        _gemeente = gemeente;
+    public String getDeelgemeente() {
+        return _deelgemeente;
+    }
+
+    public Locatie(String gemeente, String postcode, String nummer, String straat, String land, String plaatsnaam, String deelgemeente, String formateerd) {
+
+        this(gemeente, straat);
         _postcode = postcode;
         _nummer = nummer;
-        _straat = straat;
         _land = land;
+        _plaatsnaam = plaatsnaam;
+        _deelgemeente = deelgemeente;
+        _formateerd = formateerd;
     }
 
     public Locatie(String gemeente, String straat) {
@@ -84,6 +96,18 @@ public class Locatie {
 
     @Override
     public String toString() {
-        return _plaatsnaam + ", " + _straat + _nummer + ", " + _postcode + _gemeente + ", " + _land;
+        return _formateerd;
+    }
+
+    @Override
+    public boolean equals(Object arg){
+
+        if (arg instanceof Locatie){
+            Locatie locatie = (Locatie)arg;
+
+            return locatie._formateerd.equals(_formateerd);
+        }
+
+        return false;
     }
 }

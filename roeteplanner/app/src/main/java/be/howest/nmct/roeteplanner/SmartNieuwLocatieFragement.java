@@ -1,25 +1,16 @@
 package be.howest.nmct.roeteplanner;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.concurrent.ExecutionException;
 
 import be.howest.nmct.roeteplanner.classes.INieweLocatieFragment;
@@ -39,6 +30,7 @@ public class SmartNieuwLocatieFragement extends Fragment implements INieweLocati
     @Bind(R.id.txvBedoeling) TextView txvBedoeling;
     @Bind(R.id.edtLocatie) EditText edtLocatie;
 
+    private Locatie _locatie = null;
     private GoogleLocationRepo _googleLocatieRepo;
     private OnNieuweLocatieCreatieListener _nieuweLocatieCreatieListener;
     private OnFragementReplaceListener _fragmentReplaceListener;
@@ -76,12 +68,14 @@ public class SmartNieuwLocatieFragement extends Fragment implements INieweLocati
             @Override
             public void onClick(View v) {
 
-                Locatie locatie = new Locatie(edtLocatie.getText().toString(), "");
+                if (_locatie == null){
+                    leesData(v);
+                }
 
-                _nieuweLocatieCreatieListener.onNieuweLocatieCreeerd(locatie);
+                _nieuweLocatieCreatieListener.onNieuweLocatieCreeerd(_locatie);
                 _fragmentReplaceListener.newFragment(LocatiesFragment.newInstance());
 
-                Snackbar.make(v, locatie.toString() + "is toegevoegd", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, _locatie.toString() + " is toegevoegd", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -96,20 +90,24 @@ public class SmartNieuwLocatieFragement extends Fragment implements INieweLocati
     }
 
     private void leesData(View v) {
-        Locatie locatie = null;
 
         try {
-             locatie = new GoogleLocationRepo().execute(edtLocatie.getText().toString()).get();
+             _locatie = new GoogleLocationRepo().execute(edtLocatie.getText().toString()).get();
         }
         catch (ExecutionException | InterruptedException ex){
             Snackbar.make(v, "Fout tijdens het verwerken van de aanvraag", Snackbar.LENGTH_LONG).show();
             return;
         }
 
-        if (locatie == null) {
+        if (_locatie == null) {
             Snackbar.make(v, "Controleer uw internetverbinding", Snackbar.LENGTH_LONG).show();
-        } else {
-            txvBedoeling.setText(locatie.toString());
+        }
+        else if (_locatie.equals(new Locatie())){
+            txvBedoeling.setText("");
+            Snackbar.make(v, "Geen gegevens gevonden", Snackbar.LENGTH_LONG).show();
+        }
+        else {
+            txvBedoeling.setText(_locatie.toString());
         }
     }
 }

@@ -32,16 +32,16 @@
         android:id="@+id/linearLayout2">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nieuwe locatie toevoegen"
+            android:text="@string/nieuwe_locatie_toevoegen"
             android:id="@+id/btnNieuw"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center_horizontal" />
 
-        <Button
+        <!--<Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/selecteren"
@@ -50,7 +50,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="0dp"
             android:layout_alignParentStart="true"
-            android:layout_gravity="right" />
+            android:layout_gravity="right" />-->
     </LinearLayout>
 
 </RelativeLayout>

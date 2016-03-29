@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
+        android:id="@+id/imgFoto"
         android:minWidth="80dp"
         android:minHeight="80dp"
         android:layout_alignParentTop="true"
@@ -19,20 +19,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gemeente"
-        android:id="@+id/txvGemeente"
+        android:text="Formateerd"
+        android:id="@+id/txvFormateerd"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView2" />
+        android:layout_toEndOf="@+id/imgFoto" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Straat"
-        android:id="@+id/txvStraat"
-        android:layout_below="@+id/txvGemeente"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView2" />
-
+    <ImageButton
+        android:id="@+id/btnVerwijder"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        android:src="@mipmap/ic_verwijder"
+        android:maxWidth="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -14,7 +14,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
+    <!--<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/selecteren"
@@ -22,12 +22,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="49dp"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true" />-->
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nieuwe locatie toevoegen"
+        android:text="@string/nieuwe_locatie_toevoegen"
         android:id="@+id/btnNieuw"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
@@ -39,7 +39,7 @@
         android:id="@+id/rcvLocaties"
         android:layout_below="@+id/txvKopTekst"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/btnSelecteren"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:layout_above="@+id/btnNieuw" />
 
 </RelativeLayout>
