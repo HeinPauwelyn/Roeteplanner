@@ -1,4 +1,4 @@
-package be.howest.nmct.roeteplanner.classes;
+package be.howest.nmct.roeteplanner.listeners;
 
 import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;

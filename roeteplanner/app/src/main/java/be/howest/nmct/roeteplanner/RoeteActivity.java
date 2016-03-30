@@ -1,12 +1,10 @@
 package be.howest.nmct.roeteplanner;
 
-import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -24,7 +22,9 @@ public class RoeteActivity extends FragmentActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roete);
 
-        _roete = (Roete) getIntent().getSerializableExtra("roete");
+        if (getIntent().hasExtra("roete")) {
+            _roete = (Roete) getIntent().getSerializableExtra("roete");
+        }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -34,12 +34,14 @@ public class RoeteActivity extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         _map = googleMap;
 
-        LatLng aankomst = new LatLng(_roete.getAankomstLocatie().getLatitude(), _roete.getAankomstLocatie().getLongitude());
-        _map.addMarker(new MarkerOptions().position(aankomst).title("aankomst"));
-        _map.moveCamera(CameraUpdateFactory.newLatLng(aankomst));
+        if (_roete != null) {
+            LatLng aankomst = new LatLng(_roete.getAankomstLocatie().getLatitude(), _roete.getAankomstLocatie().getLongitude());
+            _map.addMarker(new MarkerOptions().position(aankomst).title("aankomst"));
+            _map.moveCamera(CameraUpdateFactory.newLatLng(aankomst));
 
-        LatLng vertrek = new LatLng(_roete.getVertrekLocatie().getLatitude(), _roete.getVertrekLocatie().getLongitude());
-        _map.addMarker(new MarkerOptions().position(vertrek).title("vertrek"));
-        _map.moveCamera(CameraUpdateFactory.newLatLng(vertrek));
+            LatLng vertrek = new LatLng(_roete.getVertrekLocatie().getLatitude(), _roete.getVertrekLocatie().getLongitude());
+            _map.addMarker(new MarkerOptions().position(vertrek).title("vertrek"));
+            _map.moveCamera(CameraUpdateFactory.newLatLng(vertrek));
+        }
     }
 }

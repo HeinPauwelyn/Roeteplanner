@@ -13,16 +13,15 @@ import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
-import be.howest.nmct.roeteplanner.classes.INieweLocatieFragment;
 import be.howest.nmct.roeteplanner.classes.Locatie;
-import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
-import be.howest.nmct.roeteplanner.classes.OnNieuweLocatieCreatieListener;
+import be.howest.nmct.roeteplanner.listeners.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.listeners.OnNieuweLocatieCreatieListener;
 import be.howest.nmct.roeteplanner.repositories.GoogleLocationRepo;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class SmartNieuwLocatieFragement extends Fragment implements INieweLocatieFragment {
+public class SmartNieuwLocatieFragement extends Fragment {
 
     @Bind(R.id.btnRefresh) ImageButton btnRefresh;
     @Bind(R.id.btnAnnuleren) Button btnAnnuleren;

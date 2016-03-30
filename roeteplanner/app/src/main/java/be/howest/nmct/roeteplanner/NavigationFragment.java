@@ -1,9 +1,7 @@
 package be.howest.nmct.roeteplanner;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.LocatieSituatie;
-import be.howest.nmct.roeteplanner.classes.OnActivityReplaceListener;
-import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.listeners.OnActivityReplaceListener;
+import be.howest.nmct.roeteplanner.listeners.OnFragementReplaceListener;
 import be.howest.nmct.roeteplanner.classes.Roete;
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -5,32 +5,24 @@
         <item
             android:id="@+id/nav_navigatie"
             android:icon="@mipmap/ic_navigatie"
-            android:title="Navigatie" />
+            android:title="@string/navigatie" />
         <item
             android:id="@+id/nav_locatie"
             android:icon="@mipmap/ic_location"
-            android:title="Mijn plaatsen" />
-        <!--<item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />-->
+            android:title="@string/mijn_plaatsen" />
+        <item
+            android:id="@+id/nav_wereld"
+            android:icon="@mipmap/ic_wereld"
+            android:title="@string/kaart" />
 
     </group>
 
-    <item android:title="Opties">
+    <item android:title="@string/opties">
         <menu>
-            <!--<item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                <android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />-->
             <item
                 android:id="@+id/nav_instellingen"
                 android:icon="@mipmap/ic_instellingen"
-                android:title="Instellingen" />
+                android:title="@string/instellingen" />
         </menu>
     </item>
 

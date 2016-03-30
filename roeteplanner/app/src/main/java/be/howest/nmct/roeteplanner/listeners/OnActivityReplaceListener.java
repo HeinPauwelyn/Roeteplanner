@@ -1,4 +1,4 @@
-package be.howest.nmct.roeteplanner.classes;
+package be.howest.nmct.roeteplanner.listeners;
 
 public interface OnActivityReplaceListener<TClass> {
 

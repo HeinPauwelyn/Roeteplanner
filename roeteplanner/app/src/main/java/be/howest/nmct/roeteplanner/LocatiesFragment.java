@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.LocatieSituatie;
-import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.listeners.OnFragementReplaceListener;
 import be.howest.nmct.roeteplanner.helpers.LocatieRecyclerAdapter;
 import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 import butterknife.Bind;

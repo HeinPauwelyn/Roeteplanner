@@ -24,4 +24,9 @@
     <string name="locatie">Locatie</string>
     <string name="nieuwe_locatie_toevoegen">Nieuwe locatie toevoegen</string>
     <string name="title_activity_roete">Map</string>
+    <string name="kaart">Kaart</string>
+    <string name="mijn_plaatsen">Mijn plaatsen</string>
+    <string name="navigatie">Navigatie</string>
+    <string name="opties">Opties</string>
+    <string name="instellingen">Instellingen</string>
 </resources>

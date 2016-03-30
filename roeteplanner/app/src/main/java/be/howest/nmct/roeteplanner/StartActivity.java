@@ -1,6 +1,5 @@
 package be.howest.nmct.roeteplanner;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -15,13 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.io.Serializable;
-
 import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.LocatieSituatie;
-import be.howest.nmct.roeteplanner.classes.OnActivityReplaceListener;
-import be.howest.nmct.roeteplanner.classes.OnFragementReplaceListener;
-import be.howest.nmct.roeteplanner.classes.OnNieuweLocatieCreatieListener;
+import be.howest.nmct.roeteplanner.listeners.OnActivityReplaceListener;
+import be.howest.nmct.roeteplanner.listeners.OnFragementReplaceListener;
+import be.howest.nmct.roeteplanner.listeners.OnNieuweLocatieCreatieListener;
 import be.howest.nmct.roeteplanner.classes.Roete;
 import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 
@@ -75,7 +72,9 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_nieuwelocatie) {
+
+            toonFragment(SmartNieuwLocatieFragement.newInstance());
             return true;
         }
 
@@ -89,17 +88,16 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         int id = item.getItemId();
 
         if (id == R.id.nav_navigatie) {
-
             toonFragment(NavigationFragment.newInstance(_roete));
         }
-
         else if (id == R.id.nav_locatie) {
-
             toonFragment(LocatiesFragment.newInstance());
         }
-
         else if (id == R.id.nav_instellingen) {
-
+        }
+        else if (id == R.id.nav_wereld) {
+            Intent intent = new Intent(this, RoeteActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
