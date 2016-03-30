@@ -1,6 +1,8 @@
 package be.howest.nmct.roeteplanner.classes;
 
-public class Locatie {
+import java.io.Serializable;
+
+public class Locatie implements Serializable {
 
     private String _gemeente;
     private String _postcode;
@@ -10,6 +12,8 @@ public class Locatie {
     private String _plaatsnaam;
     private String _formateerd = "";
     private String _deelgemeente;
+    private double _longitude;
+    private double _latitude;
 
     public String getPlaatsnaam() {
         return _plaatsnaam;
@@ -75,7 +79,23 @@ public class Locatie {
         return _deelgemeente;
     }
 
-    public Locatie(String gemeente, String postcode, String nummer, String straat, String land, String plaatsnaam, String deelgemeente, String formateerd) {
+    public double getLongitude() {
+        return _longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        _longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return _latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        _latitude = latitude;
+    }
+
+    public Locatie(String gemeente, String postcode, String nummer, String straat, String land, String plaatsnaam, String deelgemeente, String formateerd, double longitude, double latitude) {
 
         this(gemeente, straat);
         _postcode = postcode;
@@ -84,6 +104,8 @@ public class Locatie {
         _plaatsnaam = plaatsnaam;
         _deelgemeente = deelgemeente;
         _formateerd = formateerd;
+        _latitude = latitude;
+        _longitude = longitude;
     }
 
     public Locatie(String gemeente, String straat) {

@@ -27,15 +27,20 @@ public class GoogleLocationRepo extends AsyncTask<String, Void, Locatie> {
 
             if (json != null) {
 
-                JSONObject jsonObj = new JSONObject(json);
-                JSONObject result = jsonObj.getJSONArray("results").getJSONObject(0);
-                JSONArray jsonArr = result.getJSONArray("address_components");
+                JSONObject rootObject = new JSONObject(json);
+                JSONObject resultaatNul = rootObject.getJSONArray("results").getJSONObject(0);
+                JSONObject jsonLocatie = resultaatNul.getJSONObject("geometry").getJSONObject("location");
 
-                locatie.setFormateerd(result.getString("formatted_address"));
+                locatie.setLatitude(jsonLocatie.getDouble("lat"));
+                locatie.setLongitude(jsonLocatie.getDouble("lng"));
 
-                for (int compIndex = 0; compIndex < jsonArr.length(); compIndex++) {
+                JSONArray adresComponenten = resultaatNul.getJSONArray("address_components");
 
-                    JSONObject element = jsonArr.getJSONObject(compIndex);
+                locatie.setFormateerd(resultaatNul.getString("formatted_address"));
+
+                for (int compIndex = 0; compIndex < adresComponenten.length(); compIndex++) {
+
+                    JSONObject element = adresComponenten.getJSONObject(compIndex);
                     JSONArray types = element.getJSONArray("types");
 
                     for (int typeIndex = 0; typeIndex < types.length(); typeIndex++) {

@@ -14,38 +14,6 @@
             android:layout_alignParentStart="true">
 
             <RelativeLayout
-                android:layout_width="269dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edtAankomstpunt"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txvAankomstpunt"
-                    android:layout_toStartOf="@+id/btnZoekAankomstpunt" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/aankomstpunt"
-                    android:id="@+id/txvAankomstpunt"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
-
-                <ImageButton
-                    android:layout_width="64px"
-                    android:layout_height="64px"
-                    android:id="@+id/btnZoekAankomstpunt"
-                    android:background="@mipmap/ic_zoeken"
-                    android:layout_alignTop="@+id/edtAankomstpunt"
-                    android:layout_alignParentEnd="true" />
-
-
-            </RelativeLayout>
-            <RelativeLayout
                 android:layout_width="227dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -78,6 +46,39 @@
                     android:background="@mipmap/ic_zoeken"
                     android:layout_below="@+id/txvVertrekpunt"
                     android:layout_alignParentLeft="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="269dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edtAankomstpunt"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/txvAankomstpunt"
+                    android:layout_toStartOf="@+id/btnZoekAankomstpunt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/aankomstpunt"
+                    android:id="@+id/txvAankomstpunt"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <ImageButton
+                    android:layout_width="64px"
+                    android:layout_height="64px"
+                    android:id="@+id/btnZoekAankomstpunt"
+                    android:background="@mipmap/ic_zoeken"
+                    android:layout_alignTop="@+id/edtAankomstpunt"
+                    android:layout_alignParentEnd="true" />
+
+
             </RelativeLayout>
 
         </LinearLayout>

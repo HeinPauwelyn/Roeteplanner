@@ -49,7 +49,9 @@ public class LocatieRepo {
                                               locatieJson.optString("land"),
                                               locatieJson.optString("plaatsnaam"),
                                               locatieJson.optString("deelgemeente"),
-                                              locatieJson.optString("formateerd")
+                                              locatieJson.optString("formateerd"),
+                                              locatieJson.optDouble("lng"),
+                                              locatieJson.optDouble("lat")
                     ));
                 }
             }
@@ -93,6 +95,8 @@ public class LocatieRepo {
                                                   .put("deelgemeente", locatie.getDeelgemeente())
                                                   .put("land", locatie.getLand())
                                                   .put("formateerd", locatie.getFormateerd())
+                                                  .put("lng", locatie.getLongitude())
+                                                  .put("lat", locatie.getLatitude())
             );
         }
 
