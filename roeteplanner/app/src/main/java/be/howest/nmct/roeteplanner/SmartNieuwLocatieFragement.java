@@ -71,10 +71,15 @@ public class SmartNieuwLocatieFragement extends Fragment {
                     leesData(v);
                 }
 
-                _nieuweLocatieCreatieListener.onNieuweLocatieCreeerd(_locatie);
-                _fragmentReplaceListener.newFragment(LocatiesFragment.newInstance());
+                if (_locatie != new Locatie()) {
+                    _nieuweLocatieCreatieListener.onNieuweLocatieCreeerd(_locatie);
+                    _fragmentReplaceListener.newFragment(LocatiesFragment.newInstance());
 
-                Snackbar.make(v, _locatie.toString() + " is toegevoegd", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(v, _locatie.toString() + " is toegevoegd", Snackbar.LENGTH_LONG).show();
+                }
+                else {
+                    Snackbar.make(v, "Dit adres kan niet toegevoegd worden.", Snackbar.LENGTH_LONG).show();
+                }
             }
         });
 

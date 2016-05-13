@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_navigatie"
+        android:icon="@mipmap/ic_navigatie"
+        android:title="@string/navigatie" />
+
     <item
         android:id="@+id/action_nieuwelocatie"
-        android:orderInCategory="100"
+        android:icon="@mipmap/ic_plus"
         android:title="@string/nieuwe_locatie_toevoegen"
         app:showAsAction="never" />
 </menu>

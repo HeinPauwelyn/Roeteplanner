@@ -2,12 +2,14 @@ package be.howest.nmct.roeteplanner;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 
 import be.howest.nmct.roeteplanner.classes.LocatieSituatie;
 import be.howest.nmct.roeteplanner.listeners.OnActivityReplaceListener;
@@ -54,7 +56,7 @@ public class NavigationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_navigation, container, false);
         ButterKnife.bind(this, view);
 
-        _activityReplaceListener = (StartActivity)getActivity();
+        //_activityReplaceListener = (StartActivity)getActivity();
         _fragmentReplaceListener = (StartActivity)getActivity();
 
         btnZoekAankomstpunt.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +76,14 @@ public class NavigationFragment extends Fragment {
         btnToonRoete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _activityReplaceListener.newActivity(RoeteActivity.class);
+
+                if (_roete.getVertrekLocatie() != null && _roete.getAankomstLocatie() != null) {
+
+                    _fragmentReplaceListener.newFragment(RoeteActivity.newInstance(_roete));
+                }
+                else {
+                    Snackbar.make(v, "Geef uw vertrek en aankomst locatie in.", Snackbar.LENGTH_LONG).show();
+                }
                 //_fragmentReplaceListener.newFragment(new FragmentActivity());
             }
         });

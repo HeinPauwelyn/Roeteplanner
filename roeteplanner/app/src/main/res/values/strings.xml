@@ -29,4 +29,5 @@
     <string name="navigatie">Navigatie</string>
     <string name="opties">Opties</string>
     <string name="instellingen">Instellingen</string>
+    <string name="klik_op_vernieuw_knop_om_gegevens_te_laden">Klik vernieuw knop voor gegevens te laden.</string>
 </resources>

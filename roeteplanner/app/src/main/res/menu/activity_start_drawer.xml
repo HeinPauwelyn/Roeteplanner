@@ -19,10 +19,14 @@
 
     <item android:title="@string/opties">
         <menu>
-            <item
+            <!--<item>
                 android:id="@+id/nav_instellingen"
                 android:icon="@mipmap/ic_instellingen"
-                android:title="@string/instellingen" />
+                android:title="@string/instellingen" />-->
+            <item
+                android:id="@+id/nav_nieuwe_locatie"
+                android:icon="@mipmap/ic_plus"
+                android:title="@string/nieuwe_locatie_toevoegen" />
         </menu>
     </item>
 

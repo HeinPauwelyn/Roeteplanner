@@ -22,10 +22,11 @@ import be.howest.nmct.roeteplanner.listeners.OnNieuweLocatieCreatieListener;
 import be.howest.nmct.roeteplanner.classes.Roete;
 import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 
-public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnFragementReplaceListener, OnActivityReplaceListener<RoeteActivity>, OnNieuweLocatieCreatieListener, LocatiesFragment.OnLocatieGevondenListener {
+public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnFragementReplaceListener, OnNieuweLocatieCreatieListener, LocatiesFragment.OnLocatieGevondenListener {
 
     private LocatieRepo _locatieRepo = null;
     private Roete _roete = new Roete();
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -77,6 +78,11 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
             toonFragment(SmartNieuwLocatieFragement.newInstance());
             return true;
         }
+        else if (id == R.id.action_navigatie){
+            
+            toonFragment(NavigationFragment.newInstance(_roete));
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -93,15 +99,17 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         else if (id == R.id.nav_locatie) {
             toonFragment(LocatiesFragment.newInstance());
         }
-        else if (id == R.id.nav_instellingen) {
-        }
         else if (id == R.id.nav_wereld) {
-            Intent intent = new Intent(this, RoeteActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(this, RoeteActivity.class);
+            toonFragment(RoeteActivity.newInstance());
+        }
+        else if (id == R.id.nav_nieuwe_locatie) {
+            toonFragment(SmartNieuwLocatieFragement.newInstance());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
@@ -116,7 +124,6 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.frmlytContentMain, fragment);
-        //transaction.add(R.id.frmlytContentMain, fragment, fragment.toString());
         transaction.addToBackStack("transaction_fromOldFragment_toNewFragment");
         transaction.commit();
     }
@@ -127,9 +134,10 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
     }
 
     @Override
-    public void newFragment(FragmentActivity fragmentActivity) {
-
+    public void newFragment(Fragment fragment, Bundle bundle) {
+        //toonFragment(fragment, bundle);
     }
+
 
     @Override
     public void onNieuweLocatieCreeerd(Locatie locatie) {
@@ -154,13 +162,5 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         }
 
         toonFragment(NavigationFragment.newInstance(_roete));
-    }
-
-    @Override
-    public void newActivity(Class<RoeteActivity> activity) {
-
-        Intent intent = new Intent(this, activity);
-        intent.putExtra("roete", _roete);
-        startActivity(intent);
     }
 }

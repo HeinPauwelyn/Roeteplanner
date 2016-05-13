@@ -1,47 +1,85 @@
 package be.howest.nmct.roeteplanner;
 
-import android.support.v4.app.FragmentActivity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.util.Log;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.PolygonOptions;
+
+import java.util.Formatter;
 
 import be.howest.nmct.roeteplanner.classes.Roete;
 
-public class RoeteActivity extends FragmentActivity implements OnMapReadyCallback {
+public class RoeteActivity extends Fragment implements OnMapReadyCallback {
 
+    private static View view;
     private static Roete _roete;
-    private GoogleMap _map;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_roete);
+    }
 
-        if (getIntent().hasExtra("roete")) {
-            _roete = (Roete) getIntent().getSerializableExtra("roete");
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        if (view != null) {
+            ViewGroup parent = (ViewGroup) view.getParent();
+
+            if (parent != null)
+                parent.removeView(view);
         }
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        try {
+            view = inflater.inflate(R.layout.activity_roete, container, false);
+        }
+        catch (InflateException e) {
+            /* map is already there, just return view as it is */
+        }
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.mapFragment);
+        mapFragment.getMapAsync(RoeteActivity.this);
+
+        return view;
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        _map = googleMap;
 
-        if (_roete != null) {
+
+        if (_roete != null && _roete.getAankomstLocatie() != null && _roete.getVertrekLocatie() != null) {
             LatLng aankomst = new LatLng(_roete.getAankomstLocatie().getLatitude(), _roete.getAankomstLocatie().getLongitude());
-            _map.addMarker(new MarkerOptions().position(aankomst).title("aankomst"));
-            _map.moveCamera(CameraUpdateFactory.newLatLng(aankomst));
+            googleMap.addMarker(new MarkerOptions().position(aankomst).title("aankomst"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(aankomst));
 
             LatLng vertrek = new LatLng(_roete.getVertrekLocatie().getLatitude(), _roete.getVertrekLocatie().getLongitude());
-            _map.addMarker(new MarkerOptions().position(vertrek).title("vertrek"));
-            _map.moveCamera(CameraUpdateFactory.newLatLng(vertrek));
+            googleMap.addMarker(new MarkerOptions().position(vertrek).title("vertrek"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(vertrek));
+
+            googleMap.addPolygon(new PolygonOptions().add(aankomst, vertrek).fillColor(Color.BLUE).strokeWidth(2));
         }
+    }
+
+    public static Fragment newInstance() {
+        return new RoeteActivity();
+    }
+
+    public static Fragment newInstance(Roete roete) {
+        _roete = roete;
+        return newInstance();
     }
 }
