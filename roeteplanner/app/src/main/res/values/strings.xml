@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Roeteplanner</string>
+    <string name="app_name">Routeplanner</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -10,8 +10,7 @@
     <string name="zoeken">Zoeken</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="toon_roete">Toon roete</string>
+    <string name="toon_roete">Toon route</string>
     <string name="selecteren">Selecteren</string>
     <string name="lorem_ipsum">Lorem ipsum</string>
     <string name="postcode_gemeente">Postcode / Gemeente</string>
@@ -30,4 +29,6 @@
     <string name="opties">Opties</string>
     <string name="instellingen">Instellingen</string>
     <string name="klik_op_vernieuw_knop_om_gegevens_te_laden">Klik vernieuw knop voor gegevens te laden.</string>
+    <string name="Routeplanner">Routeplanner</string>
+    <string name="mijn_naam">Hein Pauwelyn 2NMCT7</string>
 </resources>

@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.SeekBar;
 
 import be.howest.nmct.roeteplanner.classes.LocatieSituatie;
 import be.howest.nmct.roeteplanner.listeners.OnActivityReplaceListener;
 import be.howest.nmct.roeteplanner.listeners.OnFragementReplaceListener;
-import be.howest.nmct.roeteplanner.classes.Roete;
+import be.howest.nmct.roeteplanner.classes.Route;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -29,13 +28,13 @@ public class NavigationFragment extends Fragment {
     private OnFragementReplaceListener _fragmentReplaceListener;
     private OnActivityReplaceListener<RoeteActivity> _activityReplaceListener;
 
-    private static Roete _roete;
+    private static Route _route;
 
     public NavigationFragment() {
     }
 
-    public static NavigationFragment newInstance(Roete roete) {
-        _roete = roete;
+    public static NavigationFragment newInstance(Route route) {
+        _route = route;
 
         return new NavigationFragment();
     }
@@ -77,9 +76,9 @@ public class NavigationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (_roete.getVertrekLocatie() != null && _roete.getAankomstLocatie() != null) {
+                if (_route.getVertrekLocatie() != null && _route.getAankomstLocatie() != null) {
 
-                    _fragmentReplaceListener.newFragment(RoeteActivity.newInstance(_roete));
+                    _fragmentReplaceListener.newFragment(RoeteActivity.newInstance(_route));
                 }
                 else {
                     Snackbar.make(v, "Geef uw vertrek en aankomst locatie in.", Snackbar.LENGTH_LONG).show();
@@ -88,12 +87,12 @@ public class NavigationFragment extends Fragment {
             }
         });
 
-        if (_roete.getAankomstLocatie() != null) {
-            edtAankomstpunt.setText(_roete.getAankomstLocatie().toString());
+        if (_route.getAankomstLocatie() != null) {
+            edtAankomstpunt.setText(_route.getAankomstLocatie().toString());
         }
 
-        if (_roete.getVertrekLocatie() != null) {
-            edtVertrekpunt.setText(_roete.getVertrekLocatie().toString());
+        if (_route.getVertrekLocatie() != null) {
+            edtVertrekpunt.setText(_route.getVertrekLocatie().toString());
         }
 
         return view;

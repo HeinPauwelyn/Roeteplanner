@@ -2,10 +2,8 @@ package be.howest.nmct.roeteplanner;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,16 +14,15 @@ import android.view.MenuItem;
 
 import be.howest.nmct.roeteplanner.classes.Locatie;
 import be.howest.nmct.roeteplanner.classes.LocatieSituatie;
-import be.howest.nmct.roeteplanner.listeners.OnActivityReplaceListener;
 import be.howest.nmct.roeteplanner.listeners.OnFragementReplaceListener;
 import be.howest.nmct.roeteplanner.listeners.OnNieuweLocatieCreatieListener;
-import be.howest.nmct.roeteplanner.classes.Roete;
+import be.howest.nmct.roeteplanner.classes.Route;
 import be.howest.nmct.roeteplanner.repositories.LocatieRepo;
 
 public class StartActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnFragementReplaceListener, OnNieuweLocatieCreatieListener, LocatiesFragment.OnLocatieGevondenListener {
 
     private LocatieRepo _locatieRepo = null;
-    private Roete _roete = new Roete();
+    private Route _route = new Route();
     private DrawerLayout drawer;
 
     @Override
@@ -44,7 +41,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
-            toonFragment(NavigationFragment.newInstance(_roete));
+            toonFragment(NavigationFragment.newInstance(_route));
         }
 
         _locatieRepo = new LocatieRepo(getApplicationContext());
@@ -79,8 +76,8 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
             return true;
         }
         else if (id == R.id.action_navigatie){
-            
-            toonFragment(NavigationFragment.newInstance(_roete));
+
+            toonFragment(NavigationFragment.newInstance(_route));
             return true;
         }
 
@@ -94,7 +91,7 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         int id = item.getItemId();
 
         if (id == R.id.nav_navigatie) {
-            toonFragment(NavigationFragment.newInstance(_roete));
+            toonFragment(NavigationFragment.newInstance(_route));
         }
         else if (id == R.id.nav_locatie) {
             toonFragment(LocatiesFragment.newInstance());
@@ -150,17 +147,17 @@ public class StartActivity extends AppCompatActivity implements NavigationView.O
         switch (heenTerug){
 
             case VERTREK:
-                _roete.setVertrekLocatie(locatie);
+                _route.setVertrekLocatie(locatie);
                 break;
 
             case AANKOMST:
-                _roete.setAankomstLocatie(locatie);
+                _route.setAankomstLocatie(locatie);
                 break;
 
             case NIET_GEKEND:
                 return;
         }
 
-        toonFragment(NavigationFragment.newInstance(_roete));
+        toonFragment(NavigationFragment.newInstance(_route));
     }
 }
