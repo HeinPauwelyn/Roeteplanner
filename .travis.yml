@@ -22,3 +22,10 @@ android:
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-22
     - sys-img-x86-android-17
+
+
+    - com.android.support:appcompat-v7:23.1.1
+    - com.android.support:design:23.1.1
+    - com.android.support:support-v4:23.1.1
+    - com.jakewharton:butterknife:7.0.1
+    - com.google.android.gms:play-services:8.4.0
