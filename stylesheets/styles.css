@@ -833,6 +833,13 @@ nav ul li {
   padding: 5px 0px;
   line-height: 16px;
 }
+nav ul li.tag-h0 {
+  font-size: 2em;
+}
+nac ul li.tag-h0 a {
+  font-weight: bold;
+  color: #333;
+}
 nav ul li.tag-h1 {
   font-size: 1.2em;
 }
