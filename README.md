@@ -1,5 +1,5 @@
-# Roeteplanner
+<img src="https://github.com/HeinPauwelyn/Roeteplanner/blob/master/Images/mipmap-xxxhdpi/ic_launcher.png" align="left" />
 
-[![Build Status](https://travis-ci.org/HeinPauwelyn/Roeteplanner.svg?branch=master)](https://travis-ci.org/HeinPauwelyn/Roeteplanner)
+# Roeteplanner
 
 Project Android Applications + onderzoek Google Maps API voor Android
